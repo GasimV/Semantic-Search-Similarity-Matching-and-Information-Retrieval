@@ -1,0 +1,129 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table .row {
+            display: flex;
+        }
+
+        .table .row.header {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .table .cell {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #000;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        /* Additional CSS for search button */
+        .form-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-section label {
+            margin-right: 10px;
+        }
+
+        .form-section input[type="text"] {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        button[type="submit"] {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="searchForm" method="post" action="{% url 'search' %}">
+            {% csrf_token %}
+            <div class="form-section">
+                <label for="search">Axtarış</label>
+                <input type="text" id="search" name="search_query">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+        {% for name, item in data.items %}
+        <label>{{name}}</label>
+        <div class="form-section">
+            <div class="table">
+                <div class="row header">
+                    <div class="cell">Maddə</div>
+                    <div class="cell">Məzmun</div>
+                    <div class="cell">Qiymət</div>
+                </div>
+                {% for name, item_ in item.items %}
+                <div class="row">
+                    <div class="cell">{{name}}</div>
+                    <div class="cell">
+                        {{item_}}
+                    </div>
+                    <div class="cell">
+                        <label class="checkbox-button">
+                            <input type="checkbox" value="1">
+                            <span class="checkmark"></span>
+                            Like
+                        </label>
+                        <label class="checkbox-button">
+                            <input type="checkbox" value="0">
+                            <span class="checkmark"></span>
+                            Dislike
+                        </label>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
