@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <form id="searchForm">
+    <div class="form-section">
+      <label for="search">Axtarış</label>
+      <input type="text" id="search" name="search">
+      <button type="submit">Search</button>
+    </div>
+    
+    <div class="form-section">
+      <label>Normativ Aktın Adı</label>
+      <div class="table">
+        <div class="row header">
+          <div class="cell">Maddə</div>
+          <div class="cell">Məzmun</div>
+          <div class="cell">Qiymət</div>
+        </div>
+        <div class="row">
+          <div class="cell">Maddə 2. Xalqın suveren...</div>
+          <div class="cell">I. Serbəst ve müstəgi...</div>
+          <div class="cell">
+            <input type="radio" name="opinion1" value="uyğundur"> uyğundur
+            <input type="radio" name="opinion1" value="uyğun deyil"> uyğun deyil
+          </div>
+        </div>
+        <!-- More rows can be added similarly -->
+      </div>
+    </div>
+    
+    <!-- Add other form sections as necessary -->
+    
+  </form>
+<div class="feedback-section">
+    <form id="feedbackForm">
+        <h3>Rəy Forması</h3>
+        <textarea id="feedback" placeholder="Rəyinizi bura yazın..."></textarea>
+        <h3>Qiymətləndirmə Forması</h3>
+        <div class="evaluation">
+            <label><input type="radio" name="evaluation" value="5"> 5 - Bütün normalar tapıldı.</label>
+            <label><input type="radio" name="evaluation" value="4"> 4 - Əksər normalar tapıldı.</label>
+            <label><input type="radio" name="evaluation" value="3"> 3 - Normaların təxminən yarısı tapıldı.</label>
+            <label><input type="radio" name="evaluation" value="2"> 2 - Bəzi normalar tapıldı.</label>
+            <label><input type="radio" name="evaluation" value="1"> 1 - Heç nə tapılmadı.</label>
+        </div>
+        <button type="submit" id="submitForm" disabled>Təstiq</button>
+    </form>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
